@@ -3,7 +3,13 @@ package entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class BaseEntityList<TEntity extends BaseEntity> extends ArrayList<TEntity>
+/**
+ * Classe base per l'implementazione delle liste di entità
+ * @author amelani
+ *
+ * @param <TEntity> Tipo di entità derivata da BaseEntity
+ */
+public abstract class BaseEntityList<TEntity extends BaseEntity> extends ArrayList<TEntity>
 {
 	private static final long serialVersionUID = 2671759023031510688L;
 	
@@ -16,5 +22,4 @@ public class BaseEntityList<TEntity extends BaseEntity> extends ArrayList<TEntit
 	{
 		super.addAll(collection);
 	}
-	
 }

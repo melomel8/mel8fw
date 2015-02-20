@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import enumerations.SQLDirection;
+import enumerations.ParameterDirection;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,7 +16,7 @@ public @interface FilterFieldAttribute
 	public String Name() default "";
 		
 	/** Direzionalità del filtro. Se non specificato, il parametro viene inteso di ingresso */
-	public SQLDirection Direction() default SQLDirection.IN;
+	public ParameterDirection Direction() default ParameterDirection.IN;
 	
 	/** Tipo del parametro SQL. Viene preso in considerazione soltanto in caso di parametri di output */
 	public int SqlType() default -1;	

@@ -1,6 +1,6 @@
 package enumerations;
 
-public enum SQLDirection 
+public enum ParameterDirection 
 {
 	IN,
 	OUT,
