@@ -27,7 +27,7 @@ public abstract class BaseFilter<TEntity extends BaseEntity> implements SQLQuera
 	{
 		ArrayList<SQLParameter> params = new ArrayList<SQLParameter>();
 		
-		//recupero tutti i campi della classe (anche se considererò soltanto quelli pubblici)
+		//recupero tutti i campi della classe (anche se considereremo soltanto quelli pubblici)
 		Field[] fields = this.getClass().getFields();
 		for (Field currentField : fields)
 		{

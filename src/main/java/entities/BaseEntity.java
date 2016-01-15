@@ -1,7 +1,10 @@
 package entities;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import sql.SQLParameter;
@@ -17,6 +20,29 @@ public abstract class BaseEntity implements SQLQuerable
 	public BaseEntity() 
 	{
 		
+	}
+	
+	public BaseEntity(ResultSet rs) throws SQLException, IllegalArgumentException, IllegalAccessException, UnsupportedEncodingException
+	{
+		this();
+		Field[] classFields = this.getClass().getFields();
+		for (int i = 0; i < classFields.length; i++)
+		{
+			Field currentField = classFields[i];
+			EntityFieldAttribute attributes = currentField.getAnnotation(EntityFieldAttribute.class);
+			if (attributes != null)
+			{			
+				try
+				{
+					Object sqlValue = rs.getObject(attributes.Name());
+					currentField.set(this, sqlValue);	
+				}
+				catch (SQLException e)
+				{
+					currentField.set(this, null);
+				}
+			}
+		}
 	}
 	
 	/**
